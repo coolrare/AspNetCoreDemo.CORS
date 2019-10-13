@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -12,6 +13,7 @@ namespace WebAPI.Controllers
     {
         // GET api/values
         [HttpGet]
+        [EnableCors]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "GET", "value1", "value2" };
