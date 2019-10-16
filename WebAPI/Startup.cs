@@ -27,12 +27,20 @@ namespace WebAPI
         {
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder.WithOrigins("http://localhost:5000")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://example.com",
+                                            "http://www.contoso.com");
+                    });
+
+                options.AddPolicy("AnotherPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://www.contoso.com")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
