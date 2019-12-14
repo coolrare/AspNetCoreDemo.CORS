@@ -26,13 +26,13 @@ namespace WebClient
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             DefaultFilesOptions dfOptions = new DefaultFilesOptions();
             dfOptions.DefaultFileNames.Clear();
             dfOptions.DefaultFileNames.Add("index.html");
             app.UseDefaultFiles(dfOptions);
-        
+
             app.UseStaticFiles();
         }
     }
